@@ -1,0 +1,39 @@
+.boxBorder {
+    padding: 20px;
+}
+.flex-container {
+  flex-direction: column;
+  border: 1px;
+  border-style: solid;
+  padding: 20px;
+  height: 400px;
+}
+
+.btn-dark {
+    background-color: dodgerblue;
+}
+
+.container-fluid {
+    padding: 50px;
+}
+.vertical-center {
+    margin-top: 75%;
+    width: 100%;
+    padding: 10px;
+}
+
+.bigBoxBorder {
+    border: 1px;
+    border-style: solid;
+    padding: 20px;
+    position: relative;
+}
+
+.bottomBoxBorder {
+    border: 1px;
+    border-style: solid;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body onload="buttonstatus()">
+    <nav class="navbar navbar-dark bg-dark">
+        <h1 style="color:white;">TO-DO List</h1>
+    </nav>
+    <div class="container-fluid row boxBorder">
+        <div class="col-5 flex-container">
+            <div class="boxBorder" id="work">
+                <input class="form-check-input" type="checkbox" id="workLabel">Work<br>
+            </div>
+            <div class="boxBorder" id="chores">
+                <input class="form-check-input" type="checkbox" id="choresLabel">Chores<br>
+            </div>
+            <div class="boxBorder" id="school">
+                <input class="form-check-input" type="checkbox" id="schoolLabel">School<br>
+            </div>
+            <div class="boxBorder" id="cleaning">
+                <input class="form-check-input" type="checkbox" id="cleaningLabel">Cleaning<br>
+            </div>
+            <div class="col bottomBoxBorder">
+                <button onclick="editButtonClick()" type="button" class="btn btn-dark" id="Edit">Edit</button>
+                <button onclick="saveButtonClick()" type="button" class="btn btn-dark" id="Save">Save</button>
+            </div>
+        </div>
+        <div class="col-1 flex-container">
+            <button onclick="addButtonClick()" type="button" class="btn btn-dark  vertical-center" id="Add">Add</button>
+            <button onclick="removeButtonClick()" type="button" class="btn btn-dark  vertical-center" id="Remove">Remove</button>
+        </div>
+        <div class="col-6 flex-container">
+            <div class="boxBorder" id="work2">
+                <input class="form-check-input" type="checkbox" id="workLabel2">Work<br>
+            </div>
+            <div class="boxBorder" id="chores2">
+                <input class="form-check-input" type="checkbox" id="choresLabel2">Chores<br>
+            </div>
+            <div class="boxBorder" id="school2">
+                <input class="form-check-input" type="checkbox" id="schoolLabel2">School<br>
+            </div>
+            <div class="boxBorder" id="cleaning2">
+                <input class="form-check-input" type="checkbox" id="cleaningLabel2">Cleaning<br>
+            </div>
+            <div class="col bottomBoxBorder">
+                <button onclick="createButtonClick()" type="button" class="btn btn-dark" id="Create">Create</button>
+            </div>
+        </div>
+        <script>
+            var arrOnList = ["false","false","false","false"];
+
+            function buttonstatus() {
+                document.getElementById("Edit").style.visibility = "hidden";
+                document.getElementById("Save").style.visibility = "hidden";
+                document.getElementById("work").style.display = "none";
+                document.getElementById("chores").style.display = "none";
+                document.getElementById("school").style.display = "none";
+                document.getElementById("cleaning").style.display = "none";
+            }
+
+            function editButtonClick() {
+                document.getElementById("Edit").style.visibility = "hidden";
+                document.getElementById("Save").style.visibility = "hidden";
+                document.getElementById("Create").style.visibility = "visible";
+                var btn = document.getElementById("Add");
+                btn.disabled = false;
+                btn = document.getElementById("Remove");
+                btn.disabled = false;
+                
+                if (arrOnList[0] == "false") {
+                    document.getElementById("work2").style.display = "block";
+                }
+                
+                if (arrOnList[1] == "false") {
+                    document.getElementById("chores2").style.display = "block";
+                }
+                
+                if (arrOnList[2] == "false") {
+                    document.getElementById("school2").style.display = "block";
+                }
+                
+                if (arrOnList[3] == "false") {
+                    document.getElementById("cleaning2").style.display = "block";
+                }
+                
+            }
+
+            function createButtonClick() {
+                document.getElementById("Edit").style.visibility = "visible";
+                document.getElementById("Save").style.visibility = "visible";
+                document.getElementById("Create").style.visibility = "hidden";
+                document.getElementById("work2").style.display = "none";
+                document.getElementById("chores2").style.display = "none";
+                document.getElementById("school2").style.display = "none";
+                document.getElementById("cleaning2").style.display = "none";
+                document.getElementById("Add").disabled = "true";
+                document.getElementById("Remove").disabled = "true";
+            }
+
+            function addButtonClick() {
+                var w = document.getElementById("workLabel2").checked;
+                var x = document.getElementById("choresLabel2").checked;
+                var y = document.getElementById("schoolLabel2").checked;
+                var z = document.getElementById("cleaningLabel2").checked;
+
+                if (w == true) {
+                    document.getElementById("work").style.display = "block";
+                    document.getElementById("work2").style.display = "none";
+                    arrOnList[0] = "true";
+                }
+
+                if (x == true) {
+                    document.getElementById("chores").style.display = "block";
+                    document.getElementById("chores2").style.display = "none";
+                    arrOnList[1] = "true";
+                }
+
+                if (y == true) {
+                    document.getElementById("school").style.display = "block";
+                    document.getElementById("school2").style.display = "none";
+                    arrOnList[2] = "true";
+                }
+
+                if (z == true) {
+                    document.getElementById("cleaning").style.display = "block";
+                    document.getElementById("cleaning2").style.display = "none";
+                    arrOnList[3] = "true";
+                }
+            }
+
+            function removeButtonClick() {
+                var w = document.getElementById("workLabel").checked;
+                var x = document.getElementById("choresLabel").checked;
+                var y = document.getElementById("schoolLabel").checked;
+                var z = document.getElementById("cleaningLabel").checked;
+
+                if (w == true) {
+                    document.getElementById("work2").style.display = "block";
+                    document.getElementById("work").style.display = "none";
+                    arrOnList[0] = "false";
+                }
+
+                if (x == true) {
+                    document.getElementById("chores2").style.display = "block";
+                    document.getElementById("chores").style.display = "none";
+                    arrOnList[1] = "false";
+                }
+
+                if (y == true) {
+                    document.getElementById("school2").style.display = "block";
+                    document.getElementById("school").style.display = "none";
+                    arrOnList[2] = "false";
+                }
+
+                if (z == true) {
+                    document.getElementById("cleaning2").style.display = "block";
+                    document.getElementById("cleaning").style.display = "none";
+                    arrOnList[3] = "false";
+                }
+            }
+        </script>
+</body>
+
+</html>
